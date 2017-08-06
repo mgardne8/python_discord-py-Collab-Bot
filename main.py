@@ -7,7 +7,7 @@ from discord.ext import commands
 
 # Make sure we have an overused and annoying prefix
 # Add useless description
-client = commands.Bot(command_prefix="!", description="Hi! I'm a bot.")
+client = commands.Bot(command_prefix="", description="Hi! I'm a bot.")
 
 # Unnecessary, we have a token. See bottom.
 # token = input('gib token')
@@ -57,6 +57,12 @@ async def status(ctx, what : str):
 @client.event
 async def on_ready():
     print("Yo boi! We up in dis, fam!")
+
+# Obligatory notice when command not found
+@client.event
+async def on_command_error(ctx, err):
+    if isinstance(err, commands.CommandNotFound):
+        await ctx.send(f'{ctx.invoked_with} is not a valid command.')
 
 # Unnecessary namespace comparison for future use
 # Definitely do not edit if unsure of purpose
