@@ -5,6 +5,8 @@ from discord.ext import commands
 # Do not modify unless you understand
 # startup_extensions = []
 
+# useless comment for a useless push
+
 # Make sure we have an overused and annoying prefix
 # Add useless description
 client = commands.Bot(command_prefix="", description="Hi! I'm a bot.")
