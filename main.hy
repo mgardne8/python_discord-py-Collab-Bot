@@ -26,8 +26,7 @@
      "Load a module"
      (try
       (.load-extension bot what)
-      (except [ImportError]
-        pass))))
+      (except [ImportError]))))
 
 #@((.command client)
    (. asyncio coroutine)
@@ -63,5 +62,4 @@
 
 
 (defmain [&rest args]
-  pass
   (.run client "W10xv01289Gqw01tVas078510vASG07vb123tVa0sg701gv13t07va"))
