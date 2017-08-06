@@ -14,64 +14,120 @@ client = commands.Bot(command_prefix="", description="Hi! I'm a bot.")
 # Unnecessary, we have a token. See bottom.
 # token = input('gib token')
 
-# Agreed
 rude_people = [122122926760656896, 103675685343612928] # devon and borked
 
-# You must always be willing to lay your law down
 @client.event
 async def on_message(message):
+        """
+        Just fuck everything
+        
+        Note
+        ----
+            Seriously fuck devon and borked
+        
+        """
     await message.channel.send(f'fuck you {message.author.mention}')
 
     if message.author.id in rude_people:
-        # Seriously, fuck you
         await message.channel.send('double fuck you')
 
-# Obligatory Load Command that gives no feedback
 @client.command()
 async def load(ctx, what : str):
-    """Load a Module"""
+        """
+        Load the given module as a cog
+         
+        Parameters
+        ----------
+        what : str
+            Thing cog you are trying to load
+        
+        Note
+        ----
+            Exception handling not included
+        
+        Todo
+        -------
+            Implement Error Handling
+        """
     try:
         bot.load_extension(what)
     except ImportError as e:
         pass
 
-# Obligatory Unload Command that gives no feedback
+    
 @client.command()
 async def unload(ctx, what : str):
-    """Unload Modules"""
+        """
+        Unload the given cog
+        
+        Parameters
+        ----------
+        what : str
+            Thing cog you are trying to unload
+        
+        Note
+        ----
+            Exception handling not included
+        
+        Todo
+        -------
+            Make this not shit
+        """
     bot.unload_extension(what)
 
-# Everyone needs a command to disconnect their bot, let's make ours frustrating
 @client.command()
 async def hidethepainharoldandkillyourself(ctx):
-    """Kill the selfbot and potentially end harold's suffering"""
+        """
+        Kill the bot and possibly harold
+        
+        Note
+        ----
+            May or may not kill Harold also
+        
+        Todo
+        -------
+            Make this only kill harold, not the bot
+        """
     await bot.logout()
 
-# Obligatory status editing command
 @client.command()
 async def status(ctx, what : str):
-    """Set status"""
+        """
+        Set the bots status to the given thing
+        
+        Parameters
+        ----------
+        what : str
+            Thing you are setting as your bots new status
+        
+        Note
+        ----
+            Exception handling not included
+        
+        Todo
+        -------
+            Make this not shit
+        """
     await ctx.message.delete()
     if bot.is_ready():
         await bot.change_presence(game=discord.Game(name=what))
 
-# Obligatory on ready, make sure this gives a super inane message
 @client.event
 async def on_ready():
+    """"Runs when the bot is ready and notifies you of said readyness in whatever you have set as your standard output"""
     print("Yo boi! We up in dis, fam!")
 
-# Obligatory notice when command not found
 @client.event
 async def on_command_error(ctx, err):
+    """Notifies you when you attempt to run an invalid command"""
     if isinstance(err, commands.CommandNotFound):
         await ctx.send(f'{ctx.invoked_with} is not a valid command.')
 
-# Unnecessary namespace comparison for future use
-# Definitely do not edit if unsure of purpose
 if __name__ == "__main__":
-    pass
+    """Unnecessary namespace comparison for future use"""
 
-    # Obligatory token inclusion
-    # Is this a real token?
-    # I don't know, who is going to actually try it out?
     client.run("W10xv01289Gqw01tVas078510vASG07vb123tVa0sg701gv13t07va")
+    """
+    Is this a real token? 
+    I don't know, who is going to actually try it out?
+    """
